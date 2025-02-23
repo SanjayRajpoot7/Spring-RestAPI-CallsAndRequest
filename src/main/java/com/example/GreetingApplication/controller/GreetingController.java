@@ -1,15 +1,18 @@
 package com.example.GreetingApplication.controller;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
 
-    // GET request to return a simple JSON greeting message
+    @Autowired
+    private GreetingService greetingService;
+
     @GetMapping
     public String getGreeting() {
-        return "{\"message\": \"Hello World\"}";
+        return "{\"message\": \"" + greetingService.getGreetingMessage() + "\"}";
     }
 
     // POST request to accept and return a simple JSON greeting message
