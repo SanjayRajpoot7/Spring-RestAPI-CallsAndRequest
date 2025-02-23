@@ -11,8 +11,9 @@ public class GreetingController {
     private GreetingService greetingService;
 
     @GetMapping
-    public String getGreeting() {
-        return "{\"message\": \"" + greetingService.getGreetingMessage() + "\"}";
+    public String getGreeting(@RequestParam(required = false) String firstName,
+                              @RequestParam(required = false) String lastName) {
+        return "{\"message\": \"" + greetingService.getGreetingMessage(firstName, lastName) + "\"}";
     }
 
     // POST request to accept and return a simple JSON greeting message
