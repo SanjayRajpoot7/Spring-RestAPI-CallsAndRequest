@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import com.example.GreetingApplication.model.Greeting;
 import com.example.GreetingApplication.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
 
 @Service
 public class GreetingService {
@@ -27,5 +28,14 @@ public class GreetingService {
         Greeting greeting = new Greeting();
         greeting.setMessage(message);
         return greetingRepository.save(greeting);
+    }
+
+
+//    public Optional<Greeting> getGreetingById(Long id) {
+//        return greetingRepository.findById(id);
+//    }
+
+    public Optional<Greeting> findGreetingById(Long id) {
+        return greetingRepository.findById(id);
     }
 }
