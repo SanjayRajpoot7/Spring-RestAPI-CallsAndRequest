@@ -5,6 +5,8 @@ public class Greeting {
     private Long id;
     private String message;
 
+    public Greeting() {}
+
     // Getters and Setters
     public Long getId() {
         return id;
