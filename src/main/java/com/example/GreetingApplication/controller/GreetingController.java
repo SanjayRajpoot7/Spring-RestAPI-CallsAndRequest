@@ -3,7 +3,15 @@ package com.example.GreetingApplication.controller;
 import com.example.GreetingApplication.model.Greeting;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+
+import com.example.GreetingApplication.controller.GreetingService;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -47,5 +55,10 @@ public class GreetingController {
     @GetMapping("/{id}")
     public Optional<Greeting> getGreetingById(@PathVariable Long id) {
         return greetingService.findGreetingById(id);
+    }
+
+    @GetMapping
+    public List<Greeting> getAllGreetings() {
+        return greetingService.getAllGreetings();
     }
 }
