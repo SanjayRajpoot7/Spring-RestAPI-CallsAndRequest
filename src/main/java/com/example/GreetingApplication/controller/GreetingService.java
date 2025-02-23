@@ -1,9 +1,15 @@
 package com.example.GreetingApplication.controller;
 
 import org.springframework.stereotype.Service;
+import com.example.GreetingApplication.model.Greeting;
+import com.example.GreetingApplication.repository.GreetingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class GreetingService {
+
+    @Autowired
+    private GreetingRepository greetingRepository;
 
     public String getGreetingMessage(String firstName, String lastName) {
         if (firstName != null && lastName != null) {
@@ -15,5 +21,11 @@ public class GreetingService {
         } else {
             return "Hello World!";
         }
+    }
+
+    public Greeting saveGreeting(String message) {
+        Greeting greeting = new Greeting();
+        greeting.setMessage(message);
+        return greetingRepository.save(greeting);
     }
 }
