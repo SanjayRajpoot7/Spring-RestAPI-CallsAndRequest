@@ -54,4 +54,14 @@ public class GreetingService {
         }
     }
 
+    public void deleteGreeting(Greeting id) {
+        Optional<Greeting> existingGreeting = greetingRepository.findById(id);
+
+        if (existingGreeting != null) {
+            greetingRepository.delete(id);  // Delete the greeting by ID
+        } else {
+            throw new RuntimeException("Greeting with ID " + id + " not found.");
+        }
+    }
+
 }
