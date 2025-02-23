@@ -1,5 +1,6 @@
 package com.example.GreetingApplication.controller;
 
+import com.example.GreetingApplication.model.Greeting;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,6 +10,7 @@ public class GreetingController {
 
     @Autowired
     private GreetingService greetingService;
+
 
     @GetMapping
     public String getGreeting(@RequestParam(required = false) String firstName,
@@ -32,5 +34,11 @@ public class GreetingController {
     @DeleteMapping
     public String deleteGreeting() {
         return "{\"message\": \"Greeting deleted\"}";
+    }
+
+
+    @PostMapping("/save")
+    public Greeting saveGreeting(@RequestBody String message) {
+        return greetingService.saveGreeting(message);
     }
 }
